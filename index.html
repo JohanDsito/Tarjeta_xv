@@ -504,7 +504,7 @@
           <!-- PASO 1: nombre -->
           <div id="paso-nombre">
             <p class="rsvp-step-title">¿Cuál es tu nombre?</p>
-            <p style="font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--silver);font-style:italic;margin-bottom:18px;line-height:1.5;">Escribe <strong style="color:var(--gold-light);font-style:normal;">solo tu nombre</strong>, no el de tus acompañantes.<br>Podrás indicar cuántos vienen contigo en el siguiente paso.</p>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--silver);font-style:italic;margin-bottom:18px;line-height:1.5;">Escribe <strong style="color:var(--gold-light);font-style:normal;">solo tu nombre y apellido</strong>, no el de tus acompañantes.<br>Podrás indicar cuántos vienen contigo en el siguiente paso.</p>
             <input type="text" id="input-nombre" class="nombre-input" placeholder="Ej: María González" autocomplete="off" maxlength="50"/>
             <div id="nombre-counter" style="font-family:'Lato',sans-serif;font-size:11px;color:rgba(176,196,222,.3);text-align:right;margin-bottom:12px;"></div>
             <p class="nombre-error" id="nombre-error">✦ Por favor escribe tu nombre para continuar</p>
@@ -669,7 +669,7 @@ function abrirSobre(){
     document.getElementById('sobre-screen').classList.add('oculto');
     document.getElementById('invitacion').classList.add('visible');
     document.body.classList.add('abierta');
-    startCountdown();initReveal();iniciarMusica();
+    startCountdown();initReveal();iniciarMusica();revisarConfirmacionPrevia();
   },1500);
 }
 
@@ -770,13 +770,16 @@ async function guardarRSVP(asiste, num){
     if(asiste){
       document.getElementById('rsvp-form').style.display='none';
       document.getElementById('rsvp-success').classList.add('v');
-      document.getElementById('success-msg').textContent=
-        num===1?`${nombreInvitado}, tu lugar está reservado bajo las estrellas ✨`
-               :`${nombreInvitado}, ${num} lugares reservados bajo las estrellas ✨`;
+      const msg=num===1?`${nombreInvitado}, tu lugar está reservado bajo las estrellas ✨`
+                       :`${nombreInvitado}, ${num} lugares reservados bajo las estrellas ✨`;
+      document.getElementById('success-msg').textContent=msg;
+      // Guardar en localStorage para evitar doble registro
+      localStorage.setItem('emily_rsvp', JSON.stringify({nombre:nombreInvitado, asiste:true, num:num, msg:msg}));
       lanzarConfetti();
     }else{
       document.getElementById('rsvp-form').style.display='none';
       document.getElementById('rsvp-decline').classList.add('v');
+      localStorage.setItem('emily_rsvp', JSON.stringify({nombre:nombreInvitado, asiste:false, num:0, msg:''}));
     }
   }catch(e){
     console.error('Error guardando RSVP:',e);
@@ -933,6 +936,71 @@ function toggleMusica(){
     musicaBtn.style.borderColor='rgba(200,168,75,.5)';
     musicaBtn.style.boxShadow='0 0 20px rgba(200,168,75,.3)';
   }
+}
+
+/* ══════════════════════════════════════
+   ANTI DOBLE REGISTRO
+══════════════════════════════════════ */
+function revisarConfirmacionPrevia(){
+  try{
+    const prev = localStorage.getItem('emily_rsvp');
+    if(!prev) return;
+    const data = JSON.parse(prev);
+
+    // Ocultar formulario completo
+    document.getElementById('rsvp-form').style.display='none';
+
+    if(data.asiste){
+      // Mostrar confirmación previa
+      const s=document.getElementById('rsvp-success');
+      s.classList.add('v');
+      document.getElementById('success-msg').innerHTML=
+        `${data.msg}<br><br><span style="font-size:13px;color:var(--sky);letter-spacing:2px;">Ya confirmaste tu asistencia ✦</span>`;
+    } else {
+      // Mostrar rechazo previo
+      const d=document.getElementById('rsvp-decline');
+      d.classList.add('v');
+      // Agregar nota de que ya respondió
+      const nota=document.createElement('p');
+      nota.style.cssText='margin-top:14px;font-family:Lato,sans-serif;font-size:11px;letter-spacing:2px;color:var(--sky);text-transform:uppercase;';
+      nota.textContent='Ya enviaste tu respuesta ✦';
+      d.appendChild(nota);
+    }
+
+    // Botón para cambiar respuesta (por si se equivocaron)
+    const wrap=data.asiste
+      ? document.getElementById('rsvp-success')
+      : document.getElementById('rsvp-decline');
+
+    const btnCambiar=document.createElement('button');
+    btnCambiar.textContent='Cambiar mi respuesta';
+    btnCambiar.style.cssText=`
+      margin-top:20px;padding:10px 24px;
+      background:transparent;border:1px solid rgba(200,168,75,.3);
+      border-radius:30px;color:rgba(176,196,222,.5);
+      font-family:Lato,sans-serif;font-size:10px;letter-spacing:3px;
+      text-transform:uppercase;cursor:pointer;
+      transition:all .3s;display:block;margin-left:auto;margin-right:auto;
+    `;
+    btnCambiar.onmouseover=()=>{btnCambiar.style.borderColor='rgba(200,168,75,.5)';btnCambiar.style.color='rgba(200,168,75,.7)';};
+    btnCambiar.onmouseout=()=>{btnCambiar.style.borderColor='rgba(200,168,75,.3)';btnCambiar.style.color='rgba(176,196,222,.5)';};
+    btnCambiar.onclick=()=>{
+      localStorage.removeItem('emily_rsvp');
+      // Resetear UI
+      wrap.classList.remove('v');
+      wrap.style.display='none';
+      document.getElementById('rsvp-form').style.display='block';
+      document.getElementById('paso-nombre').style.display='block';
+      document.getElementById('paso-asistencia').style.display='none';
+      document.getElementById('num-section').classList.remove('v');
+      document.getElementById('input-nombre').value='';
+      document.getElementById('num-display').textContent='1';
+      numInvitados=1; nombreInvitado='';
+      btnCambiar.remove();
+    };
+    wrap.appendChild(btnCambiar);
+
+  }catch(e){ console.log('localStorage no disponible'); }
 }
 </script>
 </body>
