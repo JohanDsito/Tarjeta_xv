@@ -286,6 +286,188 @@
     .countdown-box{width:60px;height:60px;}
     .countdown-num{font-size:20px;}
   }
+
+  /* ══════════════════════════════════
+     INTRO SLIDES
+  ══════════════════════════════════ */
+  #intro-slides{
+    position:fixed;inset:0;z-index:490;
+    background:transparent;
+    display:flex;flex-direction:column;
+    align-items:center;justify-content:center;
+    text-align:center;
+    transition:opacity .8s ease,visibility .8s ease;
+  }
+  #intro-slides.oculto{opacity:0;visibility:hidden;pointer-events:none;}
+
+  /* Botón saltar — esquina superior derecha */
+  #btn-saltar{
+    position:absolute;top:20px;right:20px;
+    padding:8px 20px;
+    border:1px solid rgba(200,168,75,.3);border-radius:20px;
+    background:rgba(3,6,26,.6);color:rgba(200,168,75,.6);
+    font-family:'Lato',sans-serif;font-size:10px;letter-spacing:3px;
+    text-transform:uppercase;cursor:pointer;
+    transition:all .3s;backdrop-filter:blur(6px);
+    z-index:10;
+  }
+  #btn-saltar:hover{border-color:var(--gold);color:var(--gold);}
+
+  /* Contenedor de cada slide */
+  .slide{
+    position:absolute;inset:0;
+    display:flex;flex-direction:column;
+    align-items:center;justify-content:center;
+    padding:20px 30px;
+    opacity:0;visibility:hidden;
+    transition:opacity .9s ease;
+    pointer-events:none;
+  }
+  .slide.activo{opacity:1;visibility:visible;pointer-events:auto;}
+
+  /* Barra de progreso inferior */
+  #barra-progreso{
+    position:absolute;bottom:0;left:0;right:0;height:2px;
+    background:rgba(200,168,75,.1);z-index:10;
+  }
+  #barra-fill{
+    height:100%;width:0%;
+    background:linear-gradient(90deg,var(--gold),var(--gold-light));
+    transition:width .1s linear;
+  }
+
+  /* Puntos de navegación */
+  #slide-dots{
+    position:absolute;bottom:20px;left:50%;transform:translateX(-50%);
+    display:flex;gap:10px;z-index:10;
+  }
+  .dot{
+    width:8px;height:8px;border-radius:50%;
+    background:rgba(200,168,75,.25);
+    border:1px solid rgba(200,168,75,.4);
+    cursor:pointer;transition:all .3s;
+  }
+  .dot.activo{background:var(--gold);transform:scale(1.3);}
+
+  /* Botón siguiente */
+  #btn-siguiente{
+    position:absolute;bottom:44px;right:24px;
+    width:44px;height:44px;border-radius:50%;
+    border:1px solid rgba(200,168,75,.4);
+    background:rgba(3,6,26,.7);color:var(--gold);
+    font-size:20px;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    transition:all .3s;backdrop-filter:blur(6px);z-index:10;
+  }
+  #btn-siguiente:hover{background:rgba(200,168,75,.15);border-color:var(--gold);}
+
+  /* ── SLIDE 1: Mensaje emotivo + quinceañera ── */
+  .slide1-msg{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(18px,4vw,28px);
+    font-style:italic;color:var(--white);
+    line-height:1.8;max-width:680px;
+    margin-bottom:30px;min-height:120px;
+  }
+  .slide1-msg .cursor-type{
+    display:inline-block;width:2px;height:1.1em;
+    background:var(--gold-light);margin-left:2px;
+    animation:blink-cursor .7s infinite;vertical-align:text-bottom;
+  }
+  @keyframes blink-cursor{0%,100%{opacity:1;}50%{opacity:0;}}
+
+  /* Figura quinceañera SVG */
+  .quinceanera-fig{
+    margin-top:10px;
+    animation:fig-float 4s ease-in-out infinite;
+    filter:drop-shadow(0 0 20px rgba(200,168,75,.35));
+  }
+  @keyframes fig-float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+
+  /* ── SLIDE 2: Padres ── */
+  .slide-label{
+    font-family:'Lato',sans-serif;font-size:10px;letter-spacing:6px;
+    text-transform:uppercase;color:var(--gold);margin-bottom:16px;
+    animation:fadeup .8s both;
+  }
+  .slide-padres-texto{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(17px,3.5vw,26px);
+    color:var(--white);line-height:1.8;max-width:600px;
+    font-style:italic;
+  }
+  .slide-padres-nombres{
+    font-family:'Cinzel Decorative',serif;
+    font-size:clamp(16px,3.5vw,26px);
+    background:linear-gradient(135deg,var(--gold),var(--gold-shine),var(--gold-light));
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    margin:16px 0;letter-spacing:2px;
+    filter:drop-shadow(0 0 12px rgba(200,168,75,.3));
+  }
+
+  /* ── SLIDE 3: Emily Sofia ── */
+  .slide3-nombre{
+    font-family:'Great Vibes',cursive;
+    font-size:clamp(52px,14vw,120px);
+    background:linear-gradient(135deg,var(--gold) 0%,var(--gold-shine) 40%,var(--gold-light) 70%,var(--gold) 100%);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    line-height:1.2;display:block;
+    filter:drop-shadow(0 0 30px rgba(200,168,75,.5));
+    padding:0 16px;
+  }
+  .slide3-xv{
+    font-family:'Cinzel Decorative',serif;
+    font-size:clamp(14px,3vw,22px);
+    color:var(--silver);letter-spacing:8px;
+    margin-top:8px;text-transform:uppercase;
+  }
+  .slide3-ornament{
+    display:flex;align-items:center;gap:14px;margin:18px auto;
+  }
+  .slide3-line{height:1px;width:60px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+  .slide3-star{color:var(--gold);font-size:16px;}
+
+  /* ── SLIDE 4: Invitación final ── */
+  .slide4-titulo{
+    font-family:'Cinzel Decorative',serif;
+    font-size:clamp(14px,3vw,22px);
+    color:var(--gold);letter-spacing:3px;margin-bottom:20px;
+  }
+  .slide4-texto{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(17px,3vw,24px);
+    color:var(--white);line-height:1.8;
+    font-style:italic;max-width:580px;margin-bottom:36px;
+  }
+  .btn-ver-invitacion{
+    padding:18px 48px;
+    background:linear-gradient(135deg,var(--gold),var(--gold-light));
+    border:none;border-radius:40px;
+    color:var(--navy);
+    font-family:'Cinzel Decorative',serif;
+    font-size:clamp(12px,2vw,15px);letter-spacing:3px;
+    cursor:pointer;transition:all .3s;
+    box-shadow:0 0 30px rgba(200,168,75,.3);
+    animation:pulse-btn 2s ease-in-out infinite;
+  }
+  @keyframes pulse-btn{0%,100%{box-shadow:0 0 20px rgba(200,168,75,.3);}50%{box-shadow:0 0 40px rgba(200,168,75,.6);}}
+  .btn-ver-invitacion:hover{transform:translateY(-3px) scale(1.03);}
+
+  /* Botón flotante "Ver presentación" (dentro de la invitación) */
+  #btn-ver-intro{
+    position:fixed;bottom:80px;right:20px;z-index:400;
+    width:46px;height:46px;border-radius:50%;
+    background:rgba(3,6,26,.85);
+    border:1px solid rgba(200,168,75,.35);
+    color:var(--gold);font-size:18px;
+    cursor:pointer;display:none;
+    align-items:center;justify-content:center;
+    box-shadow:0 0 15px rgba(200,168,75,.15);
+    transition:all .3s;backdrop-filter:blur(8px);
+    title:"Ver presentación";
+  }
+  #btn-ver-intro:hover{border-color:var(--gold);box-shadow:0 0 25px rgba(200,168,75,.3);}
+
 </style>
 </head>
 <body>
@@ -295,7 +477,7 @@
 
 <!-- MÚSICA DE FONDO -->
 <audio id="bg-music" loop preload="none">
-  <source src="Reflected In Her Eyes.mp3" type="audio/mpeg">
+  <source src="https://cdn.pixabay.com/audio/2022/10/16/audio_12c7d7b04e.mp3" type="audio/mpeg">
 </audio>
 
 <!-- Botón flotante música -->
@@ -360,6 +542,96 @@
     </div>
   </div>
 </div>
+
+
+<!-- ══════════════════ INTRO SLIDES ══════════════════ -->
+<div id="intro-slides" class="oculto">
+
+  <button id="btn-saltar" onclick="saltarIntro()">Saltar ✕</button>
+
+  <!-- SLIDE 1: Mensaje emotivo -->
+  <div class="slide" id="slide-1">
+    <p class="slide1-msg" id="typewriter-txt"><span class="cursor-type"></span></p>
+    <svg class="quinceanera-fig" width="140" height="200" viewBox="0 0 140 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Vestido -->
+      <ellipse cx="70" cy="155" rx="52" ry="42" fill="rgba(200,168,75,.18)" stroke="rgba(200,168,75,.5)" stroke-width="1"/>
+      <ellipse cx="70" cy="145" rx="36" ry="52" fill="rgba(200,168,75,.12)" stroke="rgba(200,168,75,.4)" stroke-width="1"/>
+      <!-- Cuerpo/torso -->
+      <rect x="55" y="88" width="30" height="38" rx="8" fill="rgba(200,168,75,.25)" stroke="rgba(200,168,75,.5)" stroke-width="1"/>
+      <!-- Cabeza -->
+      <circle cx="70" cy="72" r="20" fill="rgba(200,168,75,.2)" stroke="rgba(200,168,75,.5)" stroke-width="1"/>
+      <!-- Corona -->
+      <polygon points="58,56 62,46 70,52 78,46 82,56" fill="rgba(200,168,75,.7)" stroke="rgba(255,240,160,.8)" stroke-width="1"/>
+      <!-- Brazos -->
+      <path d="M55 100 Q40 108 38 120" stroke="rgba(200,168,75,.4)" stroke-width="2" stroke-linecap="round" fill="none"/>
+      <path d="M85 100 Q100 108 102 120" stroke="rgba(200,168,75,.4)" stroke-width="2" stroke-linecap="round" fill="none"/>
+      <!-- Estrellas alrededor -->
+      <text x="18" y="80" font-size="12" fill="rgba(200,168,75,.6)">✦</text>
+      <text x="108" y="70" font-size="10" fill="rgba(200,168,75,.5)">✦</text>
+      <text x="24" y="145" font-size="8" fill="rgba(200,168,75,.4)">★</text>
+      <text x="108" y="148" font-size="9" fill="rgba(200,168,75,.4)">★</text>
+    </svg>
+  </div>
+
+  <!-- SLIDE 2: Padres -->
+  <div class="slide" id="slide-2">
+    <p class="slide-label" style="animation-delay:.2s">Con todo el amor del mundo</p>
+    <p class="slide-padres-texto" style="animation:fadeup .9s .3s both;">
+      Nosotros,
+    </p>
+    <p class="slide-padres-nombres" style="animation:fadeup 1s .5s both;">
+      Jairo Delgado<br>&amp; Erica Delgado
+    </p>
+    <p class="slide-padres-texto" style="animation:fadeup .9s .8s both;margin-top:4px;">
+      tenemos el inmenso honor y la alegría<br>
+      de invitarte a compartir con nosotros<br>
+      <em>esta hermosa noche llena de amor.</em>
+    </p>
+  </div>
+
+  <!-- SLIDE 3: Emily Sofia -->
+  <div class="slide" id="slide-3">
+    <p class="slide-label" style="animation:fadeup .8s .2s both;">Quien cumple sus</p>
+    <span class="slide3-xv" style="animation:fadeup .8s .1s both;">✦ &nbsp; XV Años &nbsp; ✦</span>
+    <div class="slide3-ornament" style="animation:fadeup .8s .3s both;">
+      <div class="slide3-line"></div><span class="slide3-star">✦</span><div class="slide3-line"></div>
+    </div>
+    <span class="slide3-nombre" style="animation:fadeup 1.2s .4s both;">Emily Sofia</span>
+    <p style="font-family:'Cinzel Decorative',serif;font-size:clamp(10px,2vw,15px);color:var(--silver);letter-spacing:6px;margin-top:10px;animation:fadeup .8s .9s both;">
+      Delgado Delgado
+    </p>
+  </div>
+
+  <!-- SLIDE 4: Invitación final -->
+  <div class="slide" id="slide-4">
+    <p class="slide4-titulo" style="animation:fadeup .8s .2s both;">✦ &nbsp; Estás invitado &nbsp; ✦</p>
+    <p class="slide4-texto" style="animation:fadeup 1s .4s both;">
+      Esta noche el universo se detiene<br>
+      para celebrar a nuestra princesa.<br><br>
+      <em>Queremos que seas parte<br>de este momento tan especial.</em>
+    </p>
+    <button class="btn-ver-invitacion" onclick="verInvitacion()" style="animation:fadeup 1s .8s both;">
+      ✦ &nbsp; Ver la invitación &nbsp; ✦
+    </button>
+  </div>
+
+  <!-- Barra de progreso -->
+  <div id="barra-progreso"><div id="barra-fill"></div></div>
+
+  <!-- Puntos -->
+  <div id="slide-dots">
+    <div class="dot activo" onclick="irASlide(0)"></div>
+    <div class="dot" onclick="irASlide(1)"></div>
+    <div class="dot" onclick="irASlide(2)"></div>
+    <div class="dot" onclick="irASlide(3)"></div>
+  </div>
+
+  <!-- Botón siguiente -->
+  <button id="btn-siguiente" onclick="siguienteSlide()">›</button>
+</div>
+
+<!-- Botón flotante ver presentación (dentro de la invitación) -->
+<button id="btn-ver-intro" onclick="reabrirIntro()" title="Ver presentación">✦</button>
 
 <!-- ══════════════════ SOBRE ══════════════════ -->
 <div id="sobre-screen">
@@ -504,8 +776,9 @@
           <!-- PASO 1: nombre -->
           <div id="paso-nombre">
             <p class="rsvp-step-title">¿Cuál es tu nombre?</p>
-            <p style="font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--silver);font-style:italic;margin-bottom:18px;line-height:1.5;">Escribe <strong style="color:var(--gold-light);font-style:normal;">solo tu nombre y apellido</strong>, no el de tus acompañantes.<br>Podrás indicar cuántos vienen contigo en el siguiente paso.</p>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--silver);font-style:italic;margin-bottom:18px;line-height:1.5;">Escribe <strong style="color:var(--gold-light);font-style:normal;">solo tu nombre</strong>, no el de tus acompañantes.<br>Podrás indicar cuántos vienen contigo en el siguiente paso.</p>
             <input type="text" id="input-nombre" class="nombre-input" placeholder="Ej: María González" autocomplete="off" maxlength="50"/>
+            <p style="font-family:'Lato',sans-serif;font-size:10px;letter-spacing:2px;color:rgba(176,196,222,.4);margin-bottom:6px;margin-top:4px;">MÁXIMO 50 CARACTERES · SOLO TU NOMBRE</p>
             <div id="nombre-counter" style="font-family:'Lato',sans-serif;font-size:11px;color:rgba(176,196,222,.3);text-align:right;margin-bottom:12px;"></div>
             <p class="nombre-error" id="nombre-error">✦ Por favor escribe tu nombre para continuar</p>
             <p class="nombre-error" id="nombre-largo" style="display:none;">✦ El nombre es demasiado largo — escribe solo el tuyo</p>
@@ -661,17 +934,22 @@ const sb = supabase.createClient(SUPA_URL, SUPA_KEY);
    SOBRE
 ══════════════════════════════════════ */
 let sobreAbierto=false;
-function abrirSobre(){
+window.abrirSobre = function(){
   if(sobreAbierto)return;sobreAbierto=true;
   document.getElementById('btn-abrir').disabled=true;
   document.getElementById('envelope').classList.add('abriendo');
+  iniciarMusica();
   setTimeout(()=>{
     document.getElementById('sobre-screen').classList.add('oculto');
-    document.getElementById('invitacion').classList.add('visible');
-    document.body.classList.add('abierta');
-    startCountdown();initReveal();iniciarMusica();revisarConfirmacionPrevia();
+    let yaVio=false;
+    try{ yaVio=!!localStorage.getItem('emily_vio_intro'); }catch(e){}
+    if(yaVio){
+      mostrarInvitacionFinal();
+    } else {
+      mostrarSlides();
+    }
   },1500);
-}
+};
 
 /* ══════════════════════════════════════
    COUNTDOWN
@@ -936,6 +1214,129 @@ function toggleMusica(){
     musicaBtn.style.borderColor='rgba(200,168,75,.5)';
     musicaBtn.style.boxShadow='0 0 20px rgba(200,168,75,.3)';
   }
+}
+
+
+/* ══════════════════════════════════════
+   INTRO SLIDES
+══════════════════════════════════════ */
+const DURACION_SLIDE = 7000; // ms por slide (excepto slide 4 que espera botón)
+let slideActual = 0;
+let timerSlide = null;
+let barraTimer = null;
+let barraInicio = null;
+
+const slides = [
+  document.getElementById('slide-1'),
+  document.getElementById('slide-2'),
+  document.getElementById('slide-3'),
+  document.getElementById('slide-4'),
+];
+const dots = document.querySelectorAll('.dot');
+
+function mostrarSlides(){
+  document.getElementById('intro-slides').classList.remove('oculto');
+  irASlide(0);
+}
+
+function irASlide(idx){
+  slides.forEach((s,i)=>{
+    s.classList.toggle('activo', i===idx);
+  });
+  dots.forEach((d,i)=> d.classList.toggle('activo', i===idx));
+  slideActual = idx;
+  clearTimeout(timerSlide);
+  reiniciarBarra();
+
+  // Slide 1 arranca typewriter
+  if(idx===0) iniciarTypewriter();
+
+  // Slides 1-3 avanzan solos, slide 4 espera el botón
+  if(idx < 3){
+    timerSlide = setTimeout(()=> siguienteSlide(), DURACION_SLIDE);
+  } else {
+    // En slide 4 ocultar barra y botón siguiente
+    document.getElementById('barra-fill').style.width='100%';
+    document.getElementById('btn-siguiente').style.opacity='0';
+    document.getElementById('btn-siguiente').style.pointerEvents='none';
+  }
+}
+
+function siguienteSlide(){
+  if(slideActual < slides.length - 1){
+    irASlide(slideActual + 1);
+  }
+}
+
+function reiniciarBarra(){
+  clearInterval(barraTimer);
+  const fill = document.getElementById('barra-fill');
+  fill.style.transition='none';
+  fill.style.width='0%';
+  document.getElementById('btn-siguiente').style.opacity='1';
+  document.getElementById('btn-siguiente').style.pointerEvents='auto';
+  setTimeout(()=>{
+    if(slideActual < 3){
+      fill.style.transition=`width ${DURACION_SLIDE}ms linear`;
+      fill.style.width='100%';
+    }
+  },30);
+}
+
+/* Typewriter — slide 1 */
+const mensajeTypewriter = `Esta noche el cielo se viste de gala,
+las estrellas brillan con una luz especial
+y el universo entero se une para celebrar
+un momento único e irrepetible... ✨`;
+
+function iniciarTypewriter(){
+  const el = document.getElementById('typewriter-txt');
+  el.innerHTML = '<span class="cursor-type"></span>';
+  let i = 0;
+  const interval = setInterval(()=>{
+    if(i >= mensajeTypewriter.length){ clearInterval(interval); return; }
+    const ch = mensajeTypewriter[i];
+    const cursor = el.querySelector('.cursor-type');
+    if(ch === '\n'){
+      cursor.insertAdjacentHTML('beforebegin','<br>');
+    } else {
+      cursor.insertAdjacentText('beforebegin', ch);
+    }
+    i++;
+  }, 45);
+}
+
+function saltarIntro(){
+  clearTimeout(timerSlide);
+  clearInterval(barraTimer);
+  document.getElementById('intro-slides').classList.add('oculto');
+  mostrarInvitacionFinal();
+}
+
+function verInvitacion(){
+  clearTimeout(timerSlide);
+  document.getElementById('intro-slides').classList.add('oculto');
+  // Guardar en localStorage que ya vio la intro
+  try{ localStorage.setItem('emily_vio_intro','1'); }catch(e){}
+  mostrarInvitacionFinal();
+}
+
+function mostrarInvitacionFinal(){
+  document.getElementById('invitacion').classList.add('visible');
+  document.body.classList.add('abierta');
+  document.getElementById('btn-ver-intro').style.display='flex';
+  startCountdown();
+  initReveal();
+  revisarConfirmacionPrevia();
+}
+
+function reabrirIntro(){
+  // Ocultar invitación temporalmente y volver a slide 1
+  document.getElementById('invitacion').classList.remove('visible');
+  document.body.classList.remove('abierta');
+  document.getElementById('btn-ver-intro').style.display='none';
+  document.getElementById('intro-slides').classList.remove('oculto');
+  irASlide(0);
 }
 
 /* ══════════════════════════════════════
