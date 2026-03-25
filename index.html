@@ -4,6 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>XV Años – Emily Sofia</title>
+<!-- ══ Open Graph — Vista previa WhatsApp ══ -->
+<meta property="og:type"        content="website"/>
+<meta property="og:title"       content="✦ XV Años · Emily Sofia Delgado ✦"/>
+<meta property="og:description" content="Sábado 11 de Abril, 2026 · 7:00 PM · Club Social Creditario · Pasto, Nariño. ¡Estás invitado a esta noche especial en el universo!"/>
+<meta property="og:image"       content="Imagen1.png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:url"         content=""/>
+<meta name="twitter:card"       content="summary_large_image"/>
+<meta name="twitter:title"      content="✦ XV Años · Emily Sofia Delgado ✦"/>
+<meta name="twitter:description" content="¡Estás invitado a esta noche especial en el universo! Sábado 11 de Abril, 2026 · 7:00 PM"/>
+<meta name="twitter:image"      content="Imagen1.png"/>
+<!-- ══ Fin Open Graph ══ -->
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel+Decorative:wght@400;700&family=Great+Vibes&family=Lato:wght@300;400&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <style>
@@ -94,11 +107,11 @@
   .ornament-star{color:var(--gold);font-size:18px;}
   .portada-fecha{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,3.5vw,28px);color:var(--white);letter-spacing:2px;margin:20px 0 8px;animation:fadeup 1s 1.9s both;}
   .portada-hora{font-family:'Cormorant Garamond',serif;font-size:clamp(16px,3vw,24px);color:var(--sky);letter-spacing:3px;animation:fadeup 1s 2.1s both;}
-  .scroll-hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;animation:fadeup 1s 3.2s both;cursor:pointer;}
-  .scroll-hint span{font-size:10px;letter-spacing:5px;color:var(--silver);text-transform:uppercase;animation:pulse-txt 2.5s ease-in-out infinite;}
+  .scroll-hint{position:absolute;bottom:140px;left:0;right:0;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:12px;animation:fadeup 1s 3.2s both;cursor:pointer;width:fit-content;}
+  .scroll-hint span{font-size:14px;letter-spacing:5px;color:var(--silver);text-transform:uppercase;animation:pulse-txt 2.5s ease-in-out infinite;font-weight:600;}
   @keyframes pulse-txt{0%,100%{opacity:.5;}50%{opacity:1;}}
   .scroll-arrows{display:flex;flex-direction:column;align-items:center;gap:3px;}
-  .scroll-arrow{width:18px;height:18px;border-right:1.5px solid var(--gold);border-bottom:1.5px solid var(--gold);transform:rotate(45deg);animation:sbounce 1.4s ease-in-out infinite;}
+  .scroll-arrow{width:24px;height:24px;border-right:2px solid var(--gold);border-bottom:2px solid var(--gold);transform:rotate(45deg);animation:sbounce 1.4s ease-in-out infinite;}
   .scroll-arrow.sa2{animation-delay:.22s;opacity:.5;}
   @keyframes sbounce{0%{transform:rotate(45deg) translate(0,0);opacity:1;}50%{transform:rotate(45deg) translate(4px,4px);opacity:.6;}100%{transform:rotate(45deg) translate(0,0);opacity:1;}}
 
@@ -162,9 +175,9 @@
 
   /* RSVP */
   #rsvp{padding:80px 20px 120px;background:radial-gradient(ellipse at center,rgba(13,21,96,.7) 0%,rgba(3,6,26,.6) 70%);text-align:center;}
-  .rsvp-box{max-width:560px;margin:0 auto;border:1px solid rgba(200,168,75,.3);border-radius:16px;padding:50px 40px;background:linear-gradient(135deg,rgba(15,25,90,.7),rgba(5,10,45,.9));position:relative;}
+  .rsvp-box{max-width:560px;margin:0 auto;border:1px solid rgba(200,168,75,.3);border-radius:16px;padding:50px 40px;background:linear-gradient(135deg,rgba(15,25,90,.7),rgba(5,10,45,.9));position:relative;text-align:center;}
   .rsvp-step-title{font-family:'Cinzel Decorative',serif;font-size:clamp(13px,2vw,15px);color:var(--white);letter-spacing:1px;margin-bottom:18px;}
-  .nombre-input{width:100%;padding:14px 22px;background:rgba(255,255,255,.05);border:1px solid rgba(200,168,75,.3);border-radius:40px;color:var(--white);font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;text-align:center;letter-spacing:1px;outline:none;transition:border-color .3s,box-shadow .3s;cursor:text;margin-bottom:8px;}
+  .nombre-input{width:100%;padding:14px 22px;background:rgba(255,255,255,.05);border:1px solid rgba(200,168,75,.3);border-radius:40px;color:var(--white);font-family:'Cormorant Garamond',serif;font-size:max(16px,20px);font-style:italic;text-align:center;letter-spacing:1px;outline:none;transition:border-color .3s,box-shadow .3s;cursor:text;margin-bottom:8px;-webkit-appearance:none;appearance:none;}
   .nombre-input::placeholder{color:rgba(176,196,222,.4);}
   .nombre-input:focus{border-color:var(--gold);box-shadow:0 0 20px rgba(200,168,75,.2);}
   .nombre-error{color:#ff7a7a;font-family:'Cormorant Garamond',serif;font-size:15px;margin-bottom:14px;display:none;font-style:italic;}
@@ -297,6 +310,7 @@
     align-items:center;justify-content:center;
     text-align:center;
     transition:opacity .8s ease,visibility .8s ease;
+    padding:0;
   }
   #intro-slides.oculto{opacity:0;visibility:hidden;pointer-events:none;}
 
@@ -318,6 +332,7 @@
     position:absolute;inset:0;
     display:flex;flex-direction:column;
     align-items:center;justify-content:center;
+    text-align:center;
     padding:20px 30px;
     opacity:0;visibility:hidden;
     transition:opacity .9s ease;
@@ -362,8 +377,8 @@
   #btn-siguiente:hover{background:rgba(200,168,75,.15);border-color:var(--gold);}
 
   /* ── SLIDE 1: Mensaje emotivo + quinceañera ── */
-  #slide-1{flex-direction:row;gap:40px;align-items:center;justify-content:center;padding:40px 60px;}
-  @media(max-width:600px){#slide-1{flex-direction:column;gap:16px;padding:40px 24px;}}
+  #slide-1{flex-direction:row;gap:40px;align-items:center;justify-content:center;text-align:left;padding:40px 60px;}
+  @media(max-width:600px){#slide-1{flex-direction:column;gap:16px;padding:40px 24px;text-align:center;}}
   .slide1-msg{
     font-family:'Cormorant Garamond',serif;
     font-size:clamp(20px,4vw,32px);
@@ -400,7 +415,7 @@
     font-family:'Cormorant Garamond',serif;
     font-size:clamp(20px,4vw,32px);
     color:var(--white);line-height:1.8;max-width:600px;
-    font-style:italic;
+    font-style:italic;text-align:center;width:100%;
   }
   .slide-padres-nombres{
     font-family:'Cinzel Decorative',serif;
@@ -417,7 +432,7 @@
     font-size:clamp(22px,5vw,40px);
     background:linear-gradient(135deg,var(--gold-shine) 0%,var(--gold) 30%,var(--gold-shine) 60%,var(--gold-light) 100%);
     -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-    letter-spacing:3px;line-height:1.4;
+    letter-spacing:3px;line-height:1.4;text-align:center;width:100%;
   }
   .padres-ampersand{
     display:block;
@@ -427,7 +442,7 @@
     color:var(--gold-light);
     line-height:1.2;
     margin:4px 0;
-    padding-left:clamp(30px,8vw,80px);
+    padding-left:0;text-align:center;width:100%;
     filter:drop-shadow(0 0 14px rgba(200,168,75,.6));
   }
   @keyframes nombre-glow{
@@ -864,7 +879,6 @@
   <!-- SLIDE 3: Emily Sofia -->
   <div class="slide" id="slide-3">
     <img src="Imagen1.png" class="fig-deco" alt="" style="position:absolute;bottom:52px;left:50%;transform:translateX(-50%);height:clamp(110px,18vh,170px);width:auto;object-fit:contain;opacity:.55;pointer-events:none;z-index:6;filter:drop-shadow(0 0 18px rgba(200,168,75,.5)) brightness(1.1);"/>
-    <p class="slide-label" style="animation:fadeup .8s .2s both;">Quien cumple sus</p>
     <span class="slide3-xv" style="animation:fadeup .8s .1s both;">✦ &nbsp; XV Años &nbsp; ✦</span>
     <div class="slide3-ornament" style="animation:fadeup .8s .3s both;">
       <div class="slide3-line"></div><span class="slide3-star">✦</span><div class="slide3-line"></div>
@@ -880,7 +894,7 @@
     <img src="Imagen1.png" class="fig-deco" alt="" style="position:absolute;bottom:52px;left:50%;transform:translateX(-50%);height:clamp(110px,18vh,170px);width:auto;object-fit:contain;opacity:.55;pointer-events:none;z-index:6;filter:drop-shadow(0 0 18px rgba(200,168,75,.5)) brightness(1.1);"/>
     <p class="slide4-titulo" style="animation:fadeup .8s .2s both;">✦ &nbsp; Estás invitado &nbsp; ✦</p>
     <p class="slide4-texto" style="animation:fadeup 1s .4s both;">
-      Esta noche el universo se detiene<br>
+      Esta noche, el universo se detiene<br>
       para celebrar a nuestra princesa.<br><br>
       <em>Queremos que seas parte<br>de este momento tan especial.</em>
     </p>
@@ -907,7 +921,7 @@
 <!-- Botón flotante ver presentación (dentro de la invitación) -->
 <button id="btn-ver-intro" onclick="reabrirIntro()" title="Ver presentación">✦</button>
 
-<!-- ══════════════════ SOBRE ══════════════════ -->
+<!-- ══════════════════ SOBRE (COMENTADO — descomentar si se desea volver a activar) ══════════════════
 <div id="sobre-screen">
   <div class="sobre-nebula sneb1"></div>
   <div class="sobre-nebula sneb2"></div>
@@ -933,6 +947,7 @@
   <p class="sobre-hint">Toca el sobre para descubrir tu invitación</p>
   <button class="btn-abrir" id="btn-abrir" onclick="abrirSobre()">✦ &nbsp; Abrir invitación &nbsp; ✦</button>
 </div>
+FIN SOBRE COMENTADO -->
 
 <!-- ══════════════════ INVITACIÓN ══════════════════ -->
 <div id="invitacion">
@@ -949,8 +964,6 @@
       <span class="ornament-star">✦</span>
       <div class="ornament-diamond"></div><div class="ornament-line"></div>
     </div>
-    <p class="portada-fecha">Sábado, 11 de Abril de 2026</p>
-    <p class="portada-hora">☽ 7:00 de la Noche ☽</p>
     <div class="scroll-hint" onclick="document.getElementById('countdown').scrollIntoView({behavior:'smooth'})">
       <span>Desliza para descubrir</span>
       <div class="scroll-arrows">
@@ -982,8 +995,8 @@
       <p class="section-subtitle">Detalles del evento</p>
       <div class="detalles-grid">
         <div class="detalle-card"><span class="detalle-icon">🌙</span><p class="detalle-titulo">Fecha</p><p class="detalle-texto">Sábado<br>11 de Abril, 2026</p></div>
-        <div class="detalle-card"><span class="detalle-icon">⭐</span><p class="detalle-titulo">Hora</p><p class="detalle-texto">7:00 PM</p><p class="detalle-sub">Puertas abren a las 6:30</p></div>
-        <div class="detalle-card"><span class="detalle-icon">🔭</span><p class="detalle-titulo">Lugar</p><p class="detalle-texto">Club Social Creditario<br>Salón Cresemillas</p><p class="detalle-sub">Calle 4 #26-115, Pasto</p></div>
+        <div class="detalle-card"><span class="detalle-icon">⭐</span><p class="detalle-titulo">Hora</p><p class="detalle-texto">7:00 PM</p><p class="detalle-sub">Agradecemos tu puntualidad</p></div>
+        <div class="detalle-card"><span class="detalle-icon">🔭</span><p class="detalle-titulo">Lugar</p><p class="detalle-texto">Club Social<br>Salón de Eventos Cresemillas</p><p class="detalle-sub">Calle 4 #26-115, Pasto</p></div>
       </div>
     </div>
   </section>
@@ -999,7 +1012,7 @@
           <strong>plateados, blancos, negros, dorados, lilas, vinos, verdes esmeralda</strong>
           — todos son bienvenidos en esta noche estelar.<br><br>
           Por favor, <strong>evita el azul oscuro y azul noche</strong>,
-          pues ese color es el vestido de nuestra quinceañera.
+          pues ese color esta reservado para nuestra quinceañera.
         </p>
         <div class="dresscode-palette">
           <div class="color-swatch"><div class="swatch-circle" style="background:#c0c0c0"></div><span class="swatch-label">Plateado</span></div>
@@ -1020,7 +1033,6 @@
       <p class="section-subtitle">Un gesto que llena el corazón</p>
       <div class="sobre-box">
         <span class="sobre-animation">💌</span>
-        <h3 class="sobre-titulo">¡No olvides tu sobre!</h3>
         <p class="sobre-texto">Tu presencia es el mejor regalo,<br>pero si deseas obsequiarle algo especial a Emily,<br><em>un sobre con tu bendición y cariño</em><br>será guardado con todo el amor del mundo. ✨</p>
       </div>
     </div>
@@ -1048,7 +1060,8 @@
           <div id="paso-nombre">
             <p class="rsvp-step-title">¿Cuál es tu nombre?</p>
             <p style="font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--silver);font-style:italic;margin-bottom:18px;line-height:1.5;">Escribe <strong style="color:var(--gold-light);font-style:normal;">solo tu nombre</strong>, no el de tus acompañantes.<br>Podrás indicar cuántos vienen contigo en el siguiente paso.</p>
-            <input type="text" id="input-nombre" class="nombre-input" placeholder="Ej: María González" autocomplete="off" maxlength="50" inputmode="text"/>
+            <input type="text" id="input-nombre" class="nombre-input" placeholder="Ej: María González" autocomplete="given-name" maxlength="50" inputmode="text" enterkeyhint="done"/>
+            <p style="font-family:'Lato',sans-serif;font-size:10px;letter-spacing:2px;color:rgba(176,196,222,.4);margin-bottom:6px;margin-top:4px;">MÁXIMO 50 CARACTERES · SOLO TU NOMBRE</p>
             <div id="nombre-counter" style="font-family:'Lato',sans-serif;font-size:11px;color:rgba(176,196,222,.3);text-align:right;margin-bottom:12px;"></div>
             <p class="nombre-error" id="nombre-error">✦ Por favor escribe tu nombre para continuar</p>
             <p class="nombre-error" id="nombre-largo" style="display:none;">✦ El nombre es demasiado largo — escribe solo el tuyo</p>
@@ -1100,6 +1113,15 @@
 const SUPA_URL  = 'https://elpbmuuqnvhluxidbsxq.supabase.co';
 const SUPA_KEY  = 'sb_publishable_Jd69NayN0d4EAubEfbBiog_ViFNCqVR';
 const sb = supabase.createClient(SUPA_URL, SUPA_KEY);
+
+/* ══════════════════════════════════════
+   VARIABLES GLOBALES
+══════════════════════════════════════ */
+let musicaActiva    = false;
+const musicaAudio   = document.getElementById('bg-music');
+const musicaBtn     = document.getElementById('music-btn');
+let filtroActivo    = 'todos';
+let todosLosRsvps   = [];
 
 /* cursor del sistema activo */
 
@@ -1201,25 +1223,23 @@ const sb = supabase.createClient(SUPA_URL, SUPA_KEY);
 })();
 
 /* ══════════════════════════════════════
-   SOBRE
+   SOBRE (COMENTADO — descomentar para reactivar)
+   let sobreAbierto=false;
+   window.abrirSobre = function(){
+     if(sobreAbierto)return;sobreAbierto=true;
+     document.getElementById('btn-abrir').disabled=true;
+     document.getElementById('envelope').classList.add('abriendo');
+     iniciarMusica();
+     setTimeout(()=>{
+       document.getElementById('sobre-screen').classList.add('oculto');
+       let yaVio=false;
+       try{ yaVio=!!localStorage.getItem('emily_vio_intro'); }catch(e){}
+       if(yaVio){ mostrarInvitacionFinal(); } else { mostrarSlides(); }
+     },1500);
+   };
 ══════════════════════════════════════ */
-let sobreAbierto=false;
-function abrirSobre(){
-  if(sobreAbierto)return;sobreAbierto=true;
-  document.getElementById('btn-abrir').disabled=true;
-  document.getElementById('envelope').classList.add('abriendo');
-  iniciarMusica();
-  setTimeout(()=>{
-    document.getElementById('sobre-screen').classList.add('oculto');
-    let yaVio=false;
-    try{ yaVio=!!localStorage.getItem('emily_vio_intro'); }catch(e){}
-    if(yaVio){
-      mostrarInvitacionFinal();
-    } else {
-      mostrarSlides();
-    }
-  },1500);
-}
+
+/* INICIO DIRECTO — ver al final del script */
 
 /* ══════════════════════════════════════
    COUNTDOWN
@@ -1247,7 +1267,12 @@ function initReveal(){
 ══════════════════════════════════════ */
 let numInvitados=1,nombreInvitado='',declineMode=false;
 document.getElementById('input-nombre').addEventListener('keydown',e=>{if(e.key==='Enter')continuarNombre();});
-document.getElementById('input-nombre').addEventListener('touchstart', function() { this.focus(); }); // Fix para móvil
+document.getElementById('input-nombre').addEventListener('focus',function(){
+  /* Scroll al input en móvil para que el teclado no lo tape */
+  setTimeout(()=>{
+    this.scrollIntoView({behavior:'smooth',block:'center'});
+  },350);
+});
 
 // Contador de caracteres en el input
 document.getElementById('input-nombre').addEventListener('input',function(){
@@ -1356,7 +1381,6 @@ function lanzarConfetti(){
 /* ══════════════════════════════════════
    PANEL ADMIN
 ══════════════════════════════════════ */
-let filtroActivo='todos',todosLosRsvps=[];
 
 // Abrir admin por URL param: ?admin=emily2026
 window.addEventListener('DOMContentLoaded',()=>{
@@ -1447,9 +1471,6 @@ function renderTabla(){
 /* ══════════════════════════════════════
    MÚSICA
 ══════════════════════════════════════ */
-let musicaActiva=false;
-const musicaAudio=document.getElementById('bg-music');
-const musicaBtn=document.getElementById('music-btn');
 
 function iniciarMusica(){
   // Se llama al abrir el sobre — después de interacción del usuario
@@ -1491,8 +1512,8 @@ function toggleMusica(){
 /* ══════════════════════════════════════
    INTRO SLIDES
 ══════════════════════════════════════ */
-const DURACION_SLIDE_1 = 12000;
-const DURACION_SLIDE = 7000;
+const DURACION_SLIDE_1 = 15000;
+const DURACION_SLIDE = 15000;
 let slideActual = 0;
 let timerSlide = null;
 let barraTimer = null;
@@ -1558,7 +1579,7 @@ function reiniciarBarra(){
 }
 
 /* Typewriter — slide 1 */
-const mensajeTypewriter = 'Esta noche el cielo se viste de gala, las estrellas brillan con una luz especial y el universo entero se une para celebrar un momento único e irrepetible... ✨';
+const mensajeTypewriter = 'Esta noche el cielo se viste de gala, las estrellas brillan con una luz especial y el universo entero se une para celebrar un momento único e irrepetible...';
 
 function iniciarTypewriter(){
   const el = document.getElementById('typewriter-txt');
@@ -1639,41 +1660,25 @@ function revisarConfirmacionPrevia(){
       d.appendChild(nota);
     }
 
-    // Botón para cambiar respuesta (por si se equivocaron)
-    const wrap=data.asiste
-      ? document.getElementById('rsvp-success')
-      : document.getElementById('rsvp-decline');
-
-    const btnCambiar=document.createElement('button');
-    btnCambiar.textContent='Cambiar mi respuesta';
-    btnCambiar.style.cssText=`
-      margin-top:20px;padding:10px 24px;
-      background:transparent;border:1px solid rgba(200,168,75,.3);
-      border-radius:30px;color:rgba(176,196,222,.5);
-      font-family:Lato,sans-serif;font-size:10px;letter-spacing:3px;
-      text-transform:uppercase;cursor:pointer;
-      transition:all .3s;display:block;margin-left:auto;margin-right:auto;
-    `;
-    btnCambiar.onmouseover=()=>{btnCambiar.style.borderColor='rgba(200,168,75,.5)';btnCambiar.style.color='rgba(200,168,75,.7)';};
-    btnCambiar.onmouseout=()=>{btnCambiar.style.borderColor='rgba(200,168,75,.3)';btnCambiar.style.color='rgba(176,196,222,.5)';};
-    btnCambiar.onclick=()=>{
-      localStorage.removeItem('emily_rsvp');
-      // Resetear UI
-      wrap.classList.remove('v');
-      wrap.style.display='none';
-      document.getElementById('rsvp-form').style.display='block';
-      document.getElementById('paso-nombre').style.display='block';
-      document.getElementById('paso-asistencia').style.display='none';
-      document.getElementById('num-section').classList.remove('v');
-      document.getElementById('input-nombre').value='';
-      document.getElementById('num-display').textContent='1';
-      numInvitados=1; nombreInvitado='';
-      btnCambiar.remove();
-    };
-    wrap.appendChild(btnCambiar);
+    /* Botón "Cambiar mi respuesta" eliminado a petición */
 
   }catch(e){ console.log('localStorage no disponible'); }
 }
+
+/* ══════════════════════════════════════
+   INICIO DIRECTO — sin sobre
+   (al final para que todas las funciones estén declaradas)
+══════════════════════════════════════ */
+(function(){
+  iniciarMusica();
+  let yaVio=false;
+  try{ yaVio=!!localStorage.getItem('emily_vio_intro'); }catch(e){}
+  if(yaVio){
+    mostrarInvitacionFinal();
+  } else {
+    mostrarSlides();
+  }
+})();
 </script>
 </body>
 </html>
